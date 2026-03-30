@@ -1,30 +1,32 @@
 services:
   database:
     image: mongo:latest
+    container_name: rz2_db
     ports:
       - "27017:27017"
     volumes:
-      - mongo_data:/data/db # Keeps data even if container stops
+      - mongo_data:/data/db
 
   backend:
     build: ./backend
+    container_name: rz2_backend
     ports:
-      - "5000:5000"
+      - "5001:5001"
     environment:
-      - PORT=5000
-      - MONGO_URI=mongodb://database:27017/rz2 # Connects via the service name 'database'
-    env_file:
-      - .env
+      - MONGO_URI=mongodb://database:27017/rz2
+      - PORT=5001
+      - JWT_SECRET=supersecret123
     volumes:
-      - ./backend:/app           # Syncs your local code to the container (Hot reload)
-      - /app/node_modules        # Prevents local node_modules from overwriting container's
+      - ./backend:/app
+      - /app/node_modules
     depends_on:
       - database
 
   frontend:
     build: ./frontend
+    container_name: rz2_frontend
     ports:
-      - "5173:5173"              # Change to 3000:3000 if using Create React App
+      - "5174:5174"
     volumes:
       - ./frontend:/app
       - /app/node_modules

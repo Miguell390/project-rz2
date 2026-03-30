@@ -1,8 +1,14 @@
-# Ignore environment variables
+# Secrets
 .env
-.env.*
+backend/.env
 
-# Ignore local dependencies (Docker handles these internally, but good to have)
+# Dependencies
 node_modules/
-frontend/node_modules/
 backend/node_modules/
+frontend/node_modules/
+
+# Build folders
+frontend/dist/
+
+# OS files
+.DS_Store

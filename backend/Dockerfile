@@ -5,3 +5,8 @@ RUN npm install
 COPY . .
 # We use nodemon for hot-reloading during Sprint 1 dev
 CMD["npx", "nodemon", "index.js"]
+
+"scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
