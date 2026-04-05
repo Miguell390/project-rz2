@@ -21,6 +21,7 @@ function Dashboard() {
         {user.role === 'Coordinator' ? (
           <div>
             <h3>Coordinator Controls</h3>
+            <button onClick={() => navigate('/manage-events')} style={btnStyle}>Manage Events</button>
             <button style={btnStyle}>Add New Project</button>
             <button style={btnStyle}>Manage Judges</button>
           </div>
